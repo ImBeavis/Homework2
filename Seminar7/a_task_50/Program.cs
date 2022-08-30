@@ -28,27 +28,23 @@ void PrintArray(int[,] array)
     }
 }
 
-bool ReturnItem(int[,] arr, int index1, int index2)
+int ReturnItem(int[,] arr, int index1, int index2)
 {
-    bool result = true;
+    int result = -1;
     for (int i = 0; i < arr.GetLength(0); i++)
     {
         for (int j = 0; j < arr.GetLength(1); j++)
         {
             if (i == index1 && j == index2)
             {
-                result = true;
                 Console.Write($"Элемент данных индексов -> {arr[index1, index2]}");
-                break;
-            }
-            else if (index1 >= arr.GetLength(0) || index2 >= arr.GetLength(1))
-            {
-                result = false;
-                Console.WriteLine("Индекс не найден!");
-                break;
             }
         }
     }
+    if (index1 >= arr.GetLength(0) || index2 >= arr.GetLength(1))
+            {         
+                Console.WriteLine("Индекс не найден!");
+            }
     return result;
 }
 
