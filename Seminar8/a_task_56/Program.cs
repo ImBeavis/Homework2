@@ -9,7 +9,7 @@ int[,] GetArray(int m, int n)
 
     for (int i = 0; i < m; i++)
         for (int j = 0; j < n; j++)
-            result[i, j] = new Random().Next(1, 100 + 1);
+            result[i, j] = new Random().Next(1, 10);
 
     return result;
 }
@@ -34,19 +34,23 @@ int SumElementsInRow(int[,] array, int i)
     return sumLine;
 }
 
-int[,] myArray = GetArray(m, n);
-PrintArray(myArray);
 
-int resultMinSum = 0;
-int sumLine = SumElementsInRow(myArray, 0);
-for (int i = 1; i < myArray.GetLength(0); i++)
+void ResultMinSumLine(int[,] arr)
 {
-    int currentSum = SumElementsInRow(myArray, i);
-    if (sumLine > currentSum)
+    int resultMinSum = 0;
+    int sumLine = SumElementsInRow(arr, 0);
+    for (int i = 1; i < arr.GetLength(0); i++)
     {
-        sumLine = currentSum;
-        resultMinSum = i;
+        int currentSum = SumElementsInRow(arr, i);
+        if (sumLine > currentSum)
+        {
+            sumLine = currentSum;
+            resultMinSum = i;
+        }
     }
+    Console.Write($"{resultMinSum + 1}-ая строка с наименьшей суммой {sumLine}");
 }
 
-Console.Write($"{resultMinSum + 1}-ая строка с наименьшей суммой {sumLine}");
+int[,] myArray = GetArray(m, n);
+PrintArray(myArray);
+ResultMinSumLine(myArray);
