@@ -1,6 +1,6 @@
 ﻿Console.Write("Введите число от: ");
 int M = int.Parse(Console.ReadLine());
-Console.Write("Введите число: ");
+Console.Write("Введите число до: ");
 int N = int.Parse(Console.ReadLine());
 
 int PrintNumbers(int k, int n)
